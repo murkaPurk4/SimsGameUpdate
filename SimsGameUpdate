@@ -1,0 +1,97 @@
+import random
+
+class Job:
+    def __init__(self, name: str = "example_job", salary: float = 1):
+        self.name = name
+        self.salary = salary
+
+    # setters
+    def set_name(self, name: str):
+        self.name = name
+
+    def set_salary(self, salary: float):
+        self.salary = salary
+
+class Car:
+    def __init__(self, brand: str, model: str, cost: float):
+        self.brand = brand
+        self.model = model
+        self.cost = cost
+        self.fuel = 100
+
+    # setters
+    def set_brand(self, brand: str):
+        self.brand = brand
+
+    def set_model(self, model: str):
+        self.model = model
+
+    def set_cost(self, cost: float):
+        self.cost = cost
+
+    # methods
+    def drive(self):
+        if self.fuel > 0:
+            self.fuel -= 10
+            print(f"{self.brand} {self.model} is driving. Fuel left: {self.fuel}")
+        else:
+            print("Out of fuel!")
+
+class Human:
+    def __init__(self, name: str, job: Job = None, home=None, car: Car = None, money: float = 0):
+        self.name = name
+        self.job = job
+        self.home = home
+        self.happiness = 100
+        self.satiety = 100
+        self.car = car
+        self.money = money
+
+    # setters
+    def set_name(self, name: str):
+        self.name = name
+
+    def set_home(self, home):
+        self.home = home
+
+    def set_car(self, car: Car):
+        self.car = car
+
+    def set_job(self, job: Job):
+        self.job = job
+
+    # methods
+    def eat(self):
+        self.satiety += 10
+
+    def work(self):
+        self.money += self.job.salary
+
+    def drive_car(self):
+        if self.car:
+            self.car.drive()
+        else:
+            print(f"{self.name} doesn't have a car.")
+
+# example usage
+programmer = Job("Programmer", 1500)
+it_specialist = Job("IT Specialist", 1000)
+deputat = Job("Dovlet Qulluqcusu", 6000)
+
+Shamsaddin = Human("Shamsaddin", deputat, None, None, 0.25)
+tesla = Car("Tesla", "Model S", 80000)
+Shamsaddin.set_car(tesla)
+
+print(f"Job:\n\tName: {programmer.name}\n\tSalary: {programmer.salary}")
+print(f"Human:\n\tName: {Shamsaddin.name}\n\tJob: {Shamsaddin.job.name} with salary {Shamsaddin.job.salary}\n\tHome: {Shamsaddin.home}\n\tCar: {Shamsaddin.car.brand} {Shamsaddin.car.model} with fuel {Shamsaddin.car.fuel}\n\tMoney: {Shamsaddin.money}")
+
+simple_job = Job()
+print(f"Job:\n\tName: {simple_job.name}\n\tSalary: {simple_job.salary}")
+
+new_name = input("Input new job name: ")
+new_salary = float(input("Input new job salary: "))
+
+simple_job.set_salary(new_salary)
+simple_job.set_name(new_name)
+
+print(f"Job:\n\tName: {simple_job.name}\n\tSalary: {simple_job.salary}")
